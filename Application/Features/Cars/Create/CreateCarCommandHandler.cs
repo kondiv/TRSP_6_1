@@ -6,12 +6,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Features.Cars.Create;
 
-public sealed class CreateCarRequestHandler(
+public sealed class CreateCarCommandHandler(
     ICarRepository cars,
-    ILogger<CreateCarRequestHandler> logger)
-    : IRequestHandler<CreateCarRequest, Result<CarId>>
+    ILogger<CreateCarCommandHandler> logger)
+    : IRequestHandler<CreateCarCommand, Result<CarId>>
 {
-    public Task<Result<CarId>> Handle(CreateCarRequest request, CancellationToken cancellationToken)
+    public Task<Result<CarId>> Handle(CreateCarCommand request, CancellationToken cancellationToken)
     {
         using var loggerScope = logger.BeginScope(new Dictionary<string, string>
         {
@@ -19,7 +19,6 @@ public sealed class CreateCarRequestHandler(
         });
 
         var mark = Mark.Create(request.Mark);
-        
         var model = Model.Create(request.Model);
 
         var car = Car.Create(mark, model);

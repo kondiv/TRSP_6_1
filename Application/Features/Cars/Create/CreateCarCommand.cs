@@ -4,5 +4,5 @@ using MediatR;
 
 namespace Application.Features.Cars.Create;
 
-public sealed record CreateCarRequest(string Mark, string Model)
+public sealed record CreateCarCommand(string Mark, string Model)
     : IRequest<Result<CarId>>;

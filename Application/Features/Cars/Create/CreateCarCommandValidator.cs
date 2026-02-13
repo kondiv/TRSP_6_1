@@ -2,7 +2,7 @@
 
 namespace Application.Features.Cars.Create;
 
-public sealed class CreateCarRequestValidator : AbstractValidator<CreateCarRequest>
+public sealed class CreateCarCommandValidator : AbstractValidator<CreateCarCommand>
 {
     public const int MarkMaxLength = 64;
     
@@ -12,7 +12,7 @@ public sealed class CreateCarRequestValidator : AbstractValidator<CreateCarReque
     
     public const int ModelMinLength = MarkMinLength;
 
-    public CreateCarRequestValidator()
+    public CreateCarCommandValidator()
     {
         RuleFor(r => r.Mark)
             .NotNull().WithMessage("Mark is required")

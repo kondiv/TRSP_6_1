@@ -9,9 +9,9 @@ namespace Application.Features.Cars.Get;
 public sealed class GetCarQueryHandler(
     ICarRepository cars,
     ILogger<GetCarQueryHandler> logger) 
-    : IRequestHandler<GetCarQuery, Result<GetCarResponse>>
+    : IRequestHandler<GetCarQuery, Result<Car>>
 {
-    public Task<Result<GetCarResponse>> Handle(GetCarQuery request, CancellationToken cancellationToken)
+    public Task<Result<Car>> Handle(GetCarQuery request, CancellationToken cancellationToken)
     {
         using var loggerScope = logger.BeginScope(new Dictionary<string, string>
         {
@@ -28,6 +28,6 @@ public sealed class GetCarQueryHandler(
             logger.LogWarning("Car with id {id} not found", id.Value);
         }
 
-        return Task.FromResult(Result.Success(new GetCarResponse(getResult.Value)));
+        return Task.FromResult(getResult);
     }
 }
