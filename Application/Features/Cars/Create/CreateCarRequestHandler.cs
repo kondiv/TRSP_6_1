@@ -1,0 +1,41 @@
+﻿using Application.Common.Repositories;
+using Ardalis.Result;
+using Domain.Entities.Car;
+using MediatR;
+using Microsoft.Extensions.Logging;
+
+namespace Application.Features.Cars.Create;
+
+public sealed class CreateCarRequestHandler(
+    ICarRepository cars,
+    ILogger<CreateCarRequestHandler> logger)
+    : IRequestHandler<CreateCarRequest, Result<CarId>>
+{
+    public Task<Result<CarId>> Handle(CreateCarRequest request, CancellationToken cancellationToken)
+    {
+        using var loggerScope = logger.BeginScope(new Dictionary<string, string>
+        {
+            ["Operation"] = "CreateCar"
+        });
+
+        var mark = Mark.Create(request.Mark);
+        
+        var model = Model.Create(request.Model);
+
+        var car = Car.Create(mark, model);
+
+        var result = cars.Add(car);
+
+        if (!result.IsSuccess)
+        {
+            logger.LogWarning("Some errors occurred during creating the entity.\nErrors {errors}",
+                result.Errors);
+        }
+        else
+        {
+            logger.LogInformation("Entity created successfully");
+        }
+
+        return Task.FromResult(result);
+    }
+}

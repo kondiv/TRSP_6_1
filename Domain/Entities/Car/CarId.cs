@@ -6,7 +6,7 @@ public sealed record CarId
 
     private CarId(Guid value) => Value = value;
 
-    public CarId New() => new(Guid.NewGuid());
+    public static CarId New() => new(Guid.NewGuid());
 
-    public CarId FromValue(Guid value) => new(value);
+    public static CarId FromValue(Guid value) => new(value);
 }

@@ -29,7 +29,7 @@ public sealed class InMemoryCarRepository : ICarRepository
         return car;
     }
 
-    public Result<IEnumerable<Car>> Get()
+    public Result<IEnumerable<Car>> List()
     {
         return _cars.Values.ToArray();
     }

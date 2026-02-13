@@ -9,5 +9,5 @@ public interface ICarRepository
     
     Result<Car> Get(CarId id);
     
-    Result<IEnumerable<Car>> Get();
+    Result<IEnumerable<Car>> List();
 }
