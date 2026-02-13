@@ -4,10 +4,6 @@ namespace Domain.Entities.Car;
 
 public sealed record Model
 {
-    public const int MaxLength = 64;
-
-    public const int MinLength = 2;
-
     public string Name { get; private init; }
 
     private Model(string name) => Name = name;
