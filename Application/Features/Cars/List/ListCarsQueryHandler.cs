@@ -12,11 +12,6 @@ public sealed class ListCarsQueryHandler(
 {
     public Task<Result<ListCarsQueryResponse>> Handle(ListCarsQuery request, CancellationToken cancellationToken)
     {
-        using var loggerScope = logger.BeginScope(new Dictionary<string, string>
-        {
-            ["Operation"] = "ListCars"
-        });
-
         var carsList = cars.List();
 
         return Task.FromResult(Result.Success(new ListCarsQueryResponse(carsList.Value)));

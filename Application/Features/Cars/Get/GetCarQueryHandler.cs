@@ -13,12 +13,6 @@ public sealed class GetCarQueryHandler(
 {
     public Task<Result<Car>> Handle(GetCarQuery request, CancellationToken cancellationToken)
     {
-        using var loggerScope = logger.BeginScope(new Dictionary<string, string>
-        {
-            ["Operation"] = "GetCar",
-            ["CarId"] = request.Id.ToString()
-        });
-
         var id = CarId.FromValue(request.Id);
 
         var getResult = cars.Get(id);
