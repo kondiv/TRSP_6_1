@@ -6,8 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace Application.Features.Cars.List;
 
 public sealed class ListCarsQueryHandler(
-    ICarRepository cars,
-    ILogger<ListCarsQueryHandler> logger) 
+    ICarRepository cars) 
     : IRequestHandler<ListCarsQuery, Result<ListCarsQueryResponse>>
 {
     public Task<Result<ListCarsQueryResponse>> Handle(ListCarsQuery request, CancellationToken cancellationToken)
