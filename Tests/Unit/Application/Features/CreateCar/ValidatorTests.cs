@@ -2,7 +2,7 @@
 using FluentValidation;
 using FluentValidation.TestHelper;
 
-namespace Tests;
+namespace Tests.Unit.Application.Features.CreateCar;
 
 public class ValidatorTests
 {
