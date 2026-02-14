@@ -25,8 +25,9 @@ public static class DependencyInjection
         {
             cfg.RegisterServicesFromAssembly(typeof(CreateCarCommand).Assembly);
 
-            cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
-            cfg.AddOpenBehavior(typeof(PerformanceBehavior<,>));
+            cfg.AddOpenBehavior(typeof(LoggingPipelineBehavior<,>));
+            cfg.AddOpenBehavior(typeof(PerformancePipelineBehavior<,>));
+            cfg.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
 
         return services;

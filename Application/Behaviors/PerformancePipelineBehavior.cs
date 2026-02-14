@@ -4,13 +4,13 @@ using System.Diagnostics;
 
 namespace Application.Behaviors;
 
-public sealed class PerformanceBehavior<TRequest, TResponse>
+public sealed class PerformancePipelineBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest
 {
-    private readonly ILogger<PerformanceBehavior<TRequest, TResponse>> _logger;
+    private readonly ILogger<PerformancePipelineBehavior<TRequest, TResponse>> _logger;
 
-    public PerformanceBehavior(ILogger<PerformanceBehavior<TRequest, TResponse>> logger) => _logger = logger;
+    public PerformancePipelineBehavior(ILogger<PerformancePipelineBehavior<TRequest, TResponse>> logger) => _logger = logger;
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
