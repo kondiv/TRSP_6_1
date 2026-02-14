@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers;
 
 [ApiController]
-[Route("api/v1/cars/")]
+[Route("api/items/")]
 public sealed class CarsContoller(IMediator mediator) : ControllerBase
 {
     [HttpPost]

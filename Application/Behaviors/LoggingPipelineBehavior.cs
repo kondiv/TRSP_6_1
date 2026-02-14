@@ -35,8 +35,8 @@ public sealed class LoggingPipelineBehavior<TRequest, TResponse>
 
         if (response is IResult result)
         {
-            if (result.Status != ResultStatus.Ok ||
-                result.Status != ResultStatus.NoContent ||
+            if (result.Status != ResultStatus.Ok &&
+                result.Status != ResultStatus.NoContent &&
                 result.Status != ResultStatus.Created)
             {
                 _logger.LogWarning("{RequestName} {@Request} completed with errors: {Errors}",
