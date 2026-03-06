@@ -17,3 +17,6 @@
 | POST    | http://localhost:5296/api/items      |
 | GET     | http://localhost:5296/api/items      |
 | GET     | http://localhost:5296/api/items/{id} |
+
+## Отправка запросов
+В данном проекте используется Scalar, который доступен по адресу http://localhost:5296/scalar
